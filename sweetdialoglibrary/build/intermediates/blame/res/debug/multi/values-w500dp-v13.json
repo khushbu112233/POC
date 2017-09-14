@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w500dp-v13/values-w500dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 54,
+                    "endOffset": 105
+                },
+                "from": {
+                    "file": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/values-w500dp/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 54,
+                        "endOffset": 106
+                    }
+                }
+            }
+        ]
+    }
+]

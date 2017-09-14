@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <!-- <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@mipmap/otp_bg_img"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:contentInsetEnd="0dp"
+                        app:contentInsetStart="0dp"
+                        android:minHeight="?attr/actionBarSize"
+                        app:titleTextColor="@android:color/white">
+
+                        <ImageView
+                            android:id="@+id/img_back_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:paddingLeft="7dp"
+                            android:src="@mipmap/back_white_btn" />
+
+
+                    </android.support.v7.widget.Toolbar>
+
+                    <ImageView
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/mobile_otp_img" />
+
+                    <com.puc.font.TextViewMontserrat_bld
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/verification_code"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/large_text_size" />
+
+                    <com.puc.font.TextViewMontserrat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/please_enter_validation_code"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/med_text_size" />
+
+                    <com.puc.font.TextViewMontserrat
+                        android:id="@+id/tv_main_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="sent to your phone number ending in 9911."
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/med_text_size" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/edt_first_otp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="-2dp"
+                                android:background="@null"
+                                android:gravity="center"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:textSize="20sp" />
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/login_blue_color"></View>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/edt_second_otp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="-2dp"
+                                android:background="@null"
+                                android:gravity="center"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:textSize="20sp" />
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/login_blue_color"></View>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/edt_third_otp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="-2dp"
+                                android:background="@null"
+                                android:gravity="center"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:textSize="20sp" />
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/login_blue_color"></View>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/edt_four_otp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="-2dp"
+                                android:background="@null"
+                                android:imeOptions="actionNext"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:textSize="20sp" />
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/login_blue_color"></View>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/edt_five_otp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="-2dp"
+                                android:background="@null"
+                                android:imeOptions="actionNext"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:textSize="20sp" />
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/login_blue_color"></View>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/edt_six_otp"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginBottom="-2dp"
+                                android:background="@null"
+                                android:gravity="center"
+                                android:imeOptions="actionDone"
+                                android:inputType="number"
+                                android:maxLength="1"
+                                android:textSize="20sp" />
+
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/login_blue_color"></View>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <com.puc.font.ButtonMontserrat_bld
+                        android:id="@+id/btn_submit_otp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="45dp"
+                        android:background="@drawable/round_full_background_blue"
+                        android:paddingBottom="20dp"
+                        android:paddingTop="20dp"
+                        android:text="@string/submit"
+                        android:textColor="@color/white" />
+
+                    <com.puc.font.TextViewMontserrat_bld
+                        android:id="@+id/tv_resend_otp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:gravity="center_horizontal"
+                        android:text="RESEND"
+                        android:textColor="@color/login_blue_color"
+                        android:textSize="@dimen/small_text_size" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+       <!-- </ScrollView>-->
+    </LinearLayout>
+</layout>

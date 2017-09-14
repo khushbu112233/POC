@@ -1,0 +1,219 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/login_blue_color"
+            android:minHeight="?attr/actionBarSize"
+            app:titleTextColor="@android:color/white">
+
+
+            <ImageView
+                android:id="@+id/img_change_pwd"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="start"
+                android:src="@mipmap/change_pwd" />
+
+            <com.puc.font.TextViewMontserrat_bld
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="DASHBOARD"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/large_text_size" />
+
+            <ImageView
+                android:id="@+id/img_logout"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end"
+                android:layout_marginRight="15dp"
+                android:src="@mipmap/logout" />
+        </android.support.v7.widget.Toolbar>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@mipmap/background2"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@mipmap/icon2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:id="@+id/ln_saved_cards"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@mipmap/dash_end_squre_ng"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp">
+
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@mipmap/dash_save_card_img" />
+
+                        <com.puc.font.TextViewMontserrat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Saved Cards" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ln_add_card"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@mipmap/dash_start_squre_ng"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@mipmap/dash_add_card_img" />
+
+                        <com.puc.font.TextViewMontserrat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add Card" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:id="@+id/ln_request_new_card"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@mipmap/dash_end_squre_ng"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@mipmap/dash_request_card" />
+
+                        <com.puc.font.TextViewMontserrat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Request New Card" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ln_cancel_card"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@mipmap/dash_start_squre_ng"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingBottom="30dp"
+                        android:paddingTop="30dp">
+
+                        <ImageView
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@mipmap/dash_cancel_card_img" />
+
+                        <com.puc.font.TextViewMontserrat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cancel Cards" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/tv_save_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Cards"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/tv_add_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Add Card"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/tv_apply_new_credtit_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Apply For New Credit Card"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</layout>

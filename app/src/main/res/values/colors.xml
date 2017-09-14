@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#2ea4ec</color>
+
+    <color name="gray">#cccccc</color>
+    <color name="white">#ffffff</color>
+    <color name="white_opasity">#40ffffff</color>
+    <color name="blue_dark_color">#035d94</color>
+    <!--login-->
+    <color name="login_blue_color">#2ea4ec</color>
+    <color name="signup_yellow_color">#fbb316</color>
+    <color name="signup_yellow_color_opesity">#40fbb316</color>
+    <color name="light_gray">#f1f1f1</color>
+    <color name="dark_gray">#606060</color>
+    
+    <color name="ln_colorError">#ffdd0031</color>
+    <color name="ln_colorControlActivated">#ff151525</color>
+    <color name="ln_colorHint">#aaaaaa</color>
+</resources>

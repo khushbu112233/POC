@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/incremental/mergeDebugResources/merged.dir/values-w720dp-v13/values-w720dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 76,
+                    "endOffset": 127
+                },
+                "from": {
+                    "file": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/values-w720dp/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 76,
+                        "endOffset": 128
+                    }
+                }
+            }
+        ]
+    }
+]

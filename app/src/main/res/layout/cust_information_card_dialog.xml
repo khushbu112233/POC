@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingTop="10dp"
+        android:orientation="vertical">
+
+
+        <com.puc.font.TextViewMontserrat_bld
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Information"
+            android:textColor="#000000"
+            android:textSize="@dimen/x_large_text_size"
+            android:gravity="center_horizontal"/>
+
+        <com.puc.font.TextViewMontserrat_bld
+            android:id="@+id/tv_desc_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="welcome"
+            android:layout_margin="10dp"
+            android:gravity="center_horizontal"
+            android:textColor="@color/dark_gray"/>
+
+
+       <TextView
+           android:id="@+id/tv_ok"
+           android:layout_width="match_parent"
+           android:layout_height="40dp"
+           android:text="OK"
+           android:layout_marginTop="5dp"
+           android:layout_gravity="bottom"
+           android:textColor="@color/white"
+           android:textSize="@dimen/large_text_size"
+           android:gravity="center"
+           android:background="@color/login_blue_color"/>
+
+    </LinearLayout>
+</LinearLayout>

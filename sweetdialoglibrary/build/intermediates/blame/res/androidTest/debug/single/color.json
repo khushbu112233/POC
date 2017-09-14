@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/res/merged/androidTest/debug/color/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/color/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/res/merged/androidTest/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/res/merged/androidTest/debug/color/abc_primary_text_material_light.xml",
+        "source": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/res/merged/androidTest/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/res/merged/androidTest/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/res/merged/androidTest/debug/color/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/color/abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/res/merged/androidTest/debug/color/abc_search_url_text.xml",
+        "source": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/res/merged/androidTest/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/res/merged/androidTest/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/color/abc_primary_text_material_dark.xml"
+    }
+]

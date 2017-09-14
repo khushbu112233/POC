@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.daimajia.swipe.SwipeLayout
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+
+        <LinearLayout
+            android:id="@+id/starbott"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:tag="Bottom3">
+
+            <RelativeLayout
+                android:id="@+id/bottom_wrapper_child1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/login_blue_color"
+                android:clickable="true">
+
+                <com.puc.font.TextViewMontserrat_bld
+                    android:id="@+id/tv_hdr_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="15dp"
+                    android:text="Are you sure you want to cancel this card."
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/large_text_size" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@+id/tv_hdr_msg"
+                    android:gravity="bottom|end"
+                    android:paddingBottom="15dp"
+                    android:paddingRight="25dp">
+
+                    <com.puc.font.TextViewMontserrat
+                        android:id="@+id/tv_no_msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:text="No"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/med_text_size" />
+
+                    <com.puc.font.TextViewMontserrat
+                        android:id="@+id/tv_yes_msg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/tv_no_msg"
+                        android:text="Yes"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/med_text_size" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+        <!--<LinearLayout
+            android:id="@+id/bottom_wrapper"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:background="#66ddff00"
+            android:tag="Bottom1"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/archive"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="@color/colorPrimary"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="Archive"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:background="#C7C7CC"
+                android:gravity="center"
+                android:text="Delete" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_wrapper_2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:tag="Bottom4">
+
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:background="@color/ln_colorError"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/star2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_horizontal"
+                    android:src="@mipmap/delete_slide_img" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="4dp"
+                    android:text="Delete"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/small_text_size" />
+
+            </LinearLayout>
+
+        </LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/cb_card_selection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="135dp"
+
+                >
+
+                <LinearLayout
+                    android:id="@+id/ln_card_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/card_option_main_bg"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1.6"
+                            android:orientation="vertical">
+
+                            <com.puc.font.TextViewMontserrat
+                                android:id="@+id/tv_card_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:singleLine="true"
+                                android:text="JOHN'S DEBIT CARD"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/small_text_size" />
+
+                            <com.puc.font.TextViewMontserrat
+                                android:id="@+id/tv_bank_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:singleLine="true"
+                                android:text="State Bank Of India"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/x_small_text_size" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ln_call_card_option"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.2"
+                            android:gravity="end"
+                            android:paddingRight="7dp">
+
+                            <ImageView
+                                android:id="@+id/img_call_card_option"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/call_img" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ln_cancle_card_option"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.2"
+                            android:gravity="end"
+                            android:paddingRight="7dp">
+
+                            <ImageView
+                                android:id="@+id/img_cancle_card_option"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/cancel_white_img" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ln_delete_card_option"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="0.2"
+                            android:gravity="end"
+                            android:paddingRight="7dp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/img_delete_card_option"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/delete_round" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/img_card_type"
+                            android:layout_width="52dp"
+                            android:layout_height="32dp"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/app_icon" />
+
+                        <com.puc.font.TextViewMontserrat
+                            android:id="@+id/tv_card_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text="**** **** **** 4587"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/large_text_size" />
+
+                    </LinearLayout>
+
+                    <com.puc.font.TextViewMontserrat
+                        android:id="@+id/tv_nick_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/med_text_size" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ln_card_detail_change_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@mipmap/card_option_transp_bg"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/ln_close_option"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginRight="15dp"
+                        android:gravity="end"
+                        android:paddingTop="15dp">
+
+                        <ImageView
+                            android:id="@+id/img_close_option"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:src="@mipmap/close_option_img" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <ImageView
+                                android:id="@+id/img_edit_card_detail"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:src="@mipmap/edit_card_img" />
+
+
+                            <ImageView
+                                android:id="@+id/img_cancel_card_detail"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:src="@mipmap/cancel_card_img"
+                                android:visibility="gone" />
+
+
+                            <ImageView
+                                android:id="@+id/img_delete_card_detail"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:src="@mipmap/delete_red_img" />
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <com.puc.font.TextViewMontserrat
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:gravity="center_horizontal"
+                                android:text="Edit" />
+
+
+                            <com.puc.font.TextViewMontserrat
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center_horizontal"
+                                android:text="Cancel Card"
+                                android:visibility="gone" />
+
+
+                            <com.puc.font.TextViewMontserrat
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:gravity="center_horizontal"
+                                android:text="Delete"
+                                android:textColor="@color/ln_colorError" />
+
+
+                        </LinearLayout>
+
+                        <!--<LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/edit_card_img"/>
+
+                            <com.puc.font.TextViewMontserrat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:text="Edit"/>
+
+                        </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/cancel_card_img"/>
+
+                                <com.puc.font.TextViewMontserrat
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="Cancel Card"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/delete_red_img"/>
+
+                                <com.puc.font.TextViewMontserrat
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:text="Delete"
+                                    android:textColor="@color/ln_colorError"/>
+
+                            </LinearLayout>-->
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+    </com.daimajia.swipe.SwipeLayout>
+</layout>

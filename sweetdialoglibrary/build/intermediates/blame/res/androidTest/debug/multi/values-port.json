@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "/home/aipxperts-ubuntu-01/Khushbu/POC/POC/sweetdialoglibrary/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-port/values-port.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 55,
+                    "endOffset": 106
+                },
+                "from": {
+                    "file": "/home/aipxperts-ubuntu-01/.android/build-cache/333d4cf5372dda6b8ae90656c605273761697b46/output/res/values-port/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 56,
+                        "endColumn": 55,
+                        "endOffset": 107
+                    }
+                }
+            }
+        ]
+    }
+]

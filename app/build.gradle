@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.puc"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    // compile 'com.github.alexandrius:accordion-swipe-layout:0.5.0'
+    //compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'morxander.editcard:EditCard:1.0.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:support-compat:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+    compile 'com.daimajia.swipelayout:library:1.2.0@aar'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    compile 'com.github.clans:fab:1.6.4'
+    //compile 'com.github.lutvie72:RackMonthPicker:1.2'
+    //compile 'cn.pedant.sweetalert:library:1.3'
+    testCompile 'junit:junit:4.12'
+    compile project(':sweetdialoglibrary')
+    compile project(path: ':rackmonthPicker')
+}

@@ -1,0 +1,578 @@
+package com.puc.adapter;
+
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
+import android.graphics.drawable.ColorDrawable;
+import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.daimajia.swipe.SwipeLayout;
+import com.puc.R;
+import com.puc.activity.RequestNewApplicationCardActivity;
+import com.puc.databinding.RowRequestNewCardListBinding;
+import com.puc.interfaces.OnClickCalltoBankCardListener;
+import com.puc.interfaces.OnClickDeleteCardDetailListener;
+import com.puc.interfaces.OnClickEditCardDetailListener;
+import com.puc.model.RequestNewCardListModel;
+import com.puc.network.ApiClient;
+import com.puc.network.ApiInterface;
+import com.puc.util.Constants;
+import com.puc.util.Pref;
+import com.puc.util.Utils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
+/**
+ * Created by aipxperts on 17/3/17.
+ */
+
+public class RequestNewApplicationCardListAdapter extends BaseAdapter {
+
+    Context context;
+    Activity ac;
+    ArrayList<RequestNewCardListModel> payLoadList = new ArrayList<>();
+    ArrayList<RequestNewCardListModel> tempList = new ArrayList<>();
+    private OnClickDeleteCardDetailListener onClickDeleteCardDetailListener;
+    private OnClickEditCardDetailListener onClickEditCardDetailListener;
+    private OnClickCalltoBankCardListener onClickCalltoBankCardListener;
+    TextView tvDelete;
+    TextView tvEditCard;
+    int checkTrue = 0;
+    int deselect = 0;
+    boolean isCBVisible = false;
+    Dialog challengeDialog;
+
+    public RequestNewApplicationCardListAdapter(Activity activity, ArrayList<RequestNewCardListModel> payLoadList, Boolean isCBVisible, TextView tvEditCard, TextView tvDelete) {
+        context = activity;
+        this.payLoadList = payLoadList;
+        this.tvEditCard = tvEditCard;
+        this.tvDelete = tvDelete;
+        this.isCBVisible = isCBVisible;
+
+    }
+
+    public void onClickCalltoBankCardListener(OnClickCalltoBankCardListener onClickCalltoBankCardListener) {
+        this.onClickCalltoBankCardListener = onClickCalltoBankCardListener;
+    }
+
+    @Override
+    public int getCount() {
+        return payLoadList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+
+        final RowRequestNewCardListBinding mBinding;
+
+        if (convertView == null) {
+
+            mBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.row_request_new_card_list, parent, false);
+            convertView = mBinding.getRoot();
+            convertView.setTag(mBinding);
+        } else {
+            mBinding = (RowRequestNewCardListBinding) convertView.getTag();
+        }
+
+        if (payLoadList.get(position).requestednewcard.equals("Y")) {
+            mBinding.lnCardDetail.setBackground(context.getDrawable(R.mipmap.request_card_bg));
+            mBinding.lnDeleteCardOption.setVisibility(View.VISIBLE);
+            mBinding.lnRequestNewCard.setVisibility(View.GONE);
+        } else {
+            mBinding.lnDeleteCardOption.setVisibility(View.GONE);
+            mBinding.lnRequestNewCard.setVisibility(View.VISIBLE);
+            mBinding.lnCardDetail.setBackground(context.getDrawable(R.mipmap.card_option_main_bg));
+        }
+
+        if (payLoadList.get(position).type.equals("Visa")) {
+            mBinding.imgCardType.setImageDrawable(context.getDrawable(R.mipmap.visa_logo_img));
+        } else if (payLoadList.get(position).type.equals("MasterCard")) {
+            mBinding.imgCardType.setImageDrawable(context.getDrawable(R.mipmap.mastercard_logo_img));
+        } else if (payLoadList.get(position).type.equals("American_Express")) {
+            mBinding.imgCardType.setImageDrawable(context.getDrawable(R.mipmap.americal_ex_logo_img));
+        } else if (payLoadList.get(position).type.equals("Discover")) {
+            mBinding.imgCardType.setImageDrawable(context.getDrawable(R.mipmap.discover_logo_img));
+        } else if (payLoadList.get(position).type.equals("JCB")) {
+            mBinding.imgCardType.setImageDrawable(context.getDrawable(R.mipmap.jcb_logo_img));
+        } else if (payLoadList.get(position).type.equals("Diners_Club")) {
+            mBinding.imgCardType.setImageDrawable(context.getDrawable(R.mipmap.dinner_club_logo_img));
+        } else {
+            mBinding.imgCardType.setImageDrawable(context.getDrawable(R.mipmap.default_credit_card_logo));
+        }
+
+        if (TextUtils.isEmpty(payLoadList.get(position).nick_name)) {
+            mBinding.tvNickName.setText(Utils.capitalize(payLoadList.get(position).card_category) + " " + Utils.capitalize(payLoadList.get(position).card_type) + " Card");
+        } else {
+            mBinding.tvNickName.setText(Utils.capitalize(payLoadList.get(position).nick_name) + "'s " + Utils.capitalize(payLoadList.get(position).card_category) + " " + Utils.capitalize(payLoadList.get(position).card_type) + " Card");
+        }
+
+
+        mBinding.tvCardName.setText(payLoadList.get(position).card_name);
+        mBinding.tvBankName.setText(payLoadList.get(position).bank_name);
+        try {
+            String card_number = Utils.decrypt(payLoadList.get(position).card_number);
+            String final_card_number = card_number.substring(12);
+            mBinding.tvCardNumber.setText("XXXX-XXXX-XXXX-" + final_card_number);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (payLoadList.get(position).isChecked) {
+            mBinding.cbCardSelection.setChecked(true);
+        } else {
+            mBinding.cbCardSelection.setChecked(false);
+        }
+        mBinding.swipe.setLeftSwipeEnabled(false);
+        mBinding.swipe.setRightSwipeEnabled(false);
+
+
+        //for full swipe code..
+        mBinding.swipe.addDrag(SwipeLayout.DragEdge.Top, mBinding.starbott.findViewWithTag("Bottom3"));
+        mBinding.swipe.addRevealListener(R.id.bottom_wrapper_child1, new SwipeLayout.OnRevealListener() {
+            @Override
+            public void onReveal(View child, SwipeLayout.DragEdge edge, float fraction, int distance) {
+                //  warning(String.valueOf(position));
+            }
+        });
+
+        mBinding.swipe.findViewById(R.id.tv_no_msg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBinding.swipe.close();
+            }
+        });
+
+        mBinding.swipe.findViewById(R.id.tv_yes_msg).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //  callCancelCardListAPI(context, payLoadList.get(position).id, position);
+                //  Utils.showProgress(context);
+            }
+        });
+
+        if (isCBVisible == true) {
+            mBinding.cbCardSelection.setVisibility(View.VISIBLE);
+
+        } else {
+            mBinding.cbCardSelection.setVisibility(View.GONE);
+            // mBinding.swipe.addDrag(SwipeLayout.DragEdge.Left, mBinding.bottomWrapper);
+            // mBinding.swipe.addDrag(SwipeLayout.DragEdge.Right, mBinding.bottomWrapper2);
+        }
+
+
+        //for check option menu open or not..
+        if (payLoadList.get(position).isOpenOptionMenu) {
+            mBinding.lnCardDetail.setVisibility(View.GONE);
+            mBinding.lnCardDetailChangeOption.setVisibility(View.VISIBLE);
+        } else {
+            mBinding.lnCardDetail.setVisibility(View.VISIBLE);
+            mBinding.lnCardDetailChangeOption.setVisibility(View.GONE);
+        }
+
+        mBinding.lnRequestNewCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //warning1(context,payLoadList.get(position).id,position);
+
+
+                JSONArray jsonArray = new JSONArray();
+                Log.e("Cancelcard", "### " + payLoadList.get(position).id);
+                jsonArray.put(payLoadList.get(position).id);
+                String address = payLoadList.get(position).street_address1 + "\n" + payLoadList.get(position).city + ", " + payLoadList.get(position).state + "-" + payLoadList.get(position).zip_code;
+                confirmationforRequestNewCard(context, jsonArray.toString(), position, address);
+            }
+        });
+
+        mBinding.lnCallCardOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                onClickCalltoBankCardListener.onclickcalltobankcard(payLoadList.get(position).customer_service_number);
+
+            }
+
+        });
+
+        mBinding.lnCloseOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mBinding.lnCardDetail.setVisibility(View.VISIBLE);
+                mBinding.lnCardDetailChangeOption.setVisibility(View.GONE);
+                payLoadList.get(position).setOpenOptionMenu(false);
+            }
+        });
+
+
+        mBinding.lnDeleteCardOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                JSONArray jsonArray = new JSONArray();
+                jsonArray.put(payLoadList.get(position).id);
+                warningsingle(context, jsonArray.toString(), position);
+            }
+        });
+
+        mBinding.cbCardSelection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (payLoadList.get(position).isChecked) {
+                    payLoadList.get(position).setChecked(false);
+
+                    int count = 0;
+                    for (int i = 0; i < payLoadList.size(); i++) {
+                        if (payLoadList.get(i).isChecked) {
+                            count++;
+                        }
+                    }
+                    checkTrue = count;
+                    displayCount(checkTrue);
+                    notifyDataSetChanged();
+                } else {
+                    payLoadList.get(position).setChecked(true);
+                    int count = 0;
+                    for (int i = 0; i < payLoadList.size(); i++) {
+                        if (payLoadList.get(i).isChecked) {
+                            count++;
+                        }
+                    }
+                    checkTrue = count;
+                    displayCount(checkTrue);
+                    notifyDataSetChanged();
+                }
+            }
+        });
+
+
+        return convertView;
+    }
+
+
+    /**
+     * dialog for expired signal when user click on expire signal then popup
+     */
+    private void confirmationforRequestNewCard(final Context context, final String card_id, final int position, final String address) {
+
+        challengeDialog = new Dialog(context, R.style.PauseDialog);
+        LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        challengeDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        challengeDialog.setContentView(R.layout.confirmation_for_requestnew_card);
+        challengeDialog.setCanceledOnTouchOutside(false);
+        challengeDialog.setCancelable(false);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+
+        lp.copyFrom(challengeDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        challengeDialog.show();
+        challengeDialog.getWindow().setAttributes(lp);
+
+        challengeDialog.getWindow().setGravity(Gravity.CENTER);
+        challengeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+
+        Button mOkbtn = (Button) challengeDialog.findViewById(R.id.btn_proceed);
+        Button mCancelGameBtn = (Button) challengeDialog.findViewById(R.id.btn_cancel_state);
+        TextView mOkTv = (TextView) challengeDialog.findViewById(R.id.tv_proceed);
+        TextView mDescTv = (TextView) challengeDialog.findViewById(R.id.tv_challenge_desc);
+        TextView mAddressTv = (TextView) challengeDialog.findViewById(R.id.tv_address_desc);
+        final TextInputLayout pwdTextInputLayout = (TextInputLayout) challengeDialog.findViewById(R.id.tl_pwd_input);
+        mAddressTv.setMovementMethod(new ScrollingMovementMethod());
+        mDescTv.setText("Request will be sent to deliver your new card on below registered address. Enter account password to request new card.");
+        mAddressTv.setText(address);
+        mCancelGameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                challengeDialog.dismiss();
+            }
+        });
+        mOkbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Utils.showToast(context, "Work in progress. " + card_id.toString());
+                if (!TextUtils.isEmpty(pwdTextInputLayout.getEditText().getText().toString().trim())) {
+                    callpwdVerficationListAPI(context,position,pwdTextInputLayout.getEditText().getText().toString(),card_id);
+                } else {
+                    pwdTextInputLayout.setError(context.getString(R.string.Please_provide_password));
+                }
+                //  challengeDialog.dismiss();
+
+            }
+        });
+        challengeDialog.show();
+    }
+    private void callpwdVerficationListAPI(final Context mContext, final int position, String pwd, final String card_id) {
+
+        ApiInterface apiService = ApiClient.getClient(((FragmentActivity) mContext)).create(ApiInterface.class);
+        Call<ResponseBody> call = apiService.checkpassword(Pref.getValue(mContext, Constants.PREF_TOKEN, ""), pwd);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Log.e("DeleteAdapter", "response " + response.toString());
+                    Utils.dismissProgress();
+                    if (response.isSuccessful()) {
+                        String res = response.body().string();
+                        JSONObject jsonObject = new JSONObject(res);
+
+                        if (jsonObject.optString("code").equals("200")) {
+                            challengeDialog.dismiss();
+                            callRequestFornewCardListAPI(context, card_id, position);
+
+                            Utils.showProgress(mContext);
+                        } else if (jsonObject.optString("code").equals("500")) {
+                            Utils.exitApplication(mContext);
+                        } else {
+                            Toast.makeText(mContext, "" + jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+                        }
+
+                        Log.e("DeleteAdapter", "cancel " + jsonObject.toString());
+
+                    } else {
+                        Log.e("DeleteAdapter", "error " + response.errorBody().toString());
+                        // Log.e(TAG,"Else " + response.message() + " code " +response.code());
+                        String errorValue = response.errorBody().string();
+
+                        JSONObject errorJsonObject = new JSONObject(errorValue);
+                        Utils.showToast(((FragmentActivity) mContext), errorJsonObject.optString("msg"));
+                        //  Log.e(TAG,"Error " + errorValue);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    public void displayCount(int checkTrue) {
+        Log.e("Adapter", "checkTrue  " + checkTrue);
+        if (checkTrue == 0) {
+            tvEditCard.setText("Select all");
+            Pref.setValue(context, "selectall", "0");
+            tvDelete.setVisibility(View.VISIBLE);
+            tvDelete.setEnabled(false);
+
+        } else {
+            tvEditCard.setText("Deselect all");
+            Pref.setValue(context, "selectall", "1");
+            tvDelete.setVisibility(View.VISIBLE);
+            tvDelete.setEnabled(true);
+        }
+
+        // tvDelete.setText("" + checkTrue + " Delete");
+
+
+        tvDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+    }
+
+
+    private void callRequestFornewCardListAPI(final Context mContext, String card_id, final int position) {
+
+        ApiInterface apiService = ApiClient.getClient(((FragmentActivity) mContext)).create(ApiInterface.class);
+        Call<ResponseBody> call = apiService.cardnewrequest(Pref.getValue(mContext, Constants.PREF_TOKEN, ""), card_id);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Log.e("DeleteAdapter", "response " + response.toString());
+                    Utils.dismissProgress();
+                    if (response.isSuccessful()) {
+                        String res = response.body().string();
+                        JSONObject jsonObject = new JSONObject(res);
+
+                        if (jsonObject.optString("code").equals("200")) {
+                            notifyDataSetChanged();
+                            mContext.startActivity(new Intent(mContext, RequestNewApplicationCardActivity.class));
+                            ((FragmentActivity) mContext).overridePendingTransition(0, 0);
+                            ((FragmentActivity) mContext).finish();
+                        } else if (jsonObject.optString("code").equals("500")) {
+                            Utils.exitApplication(mContext);
+                        } else {
+                            Toast.makeText(mContext, "" + jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+                        }
+
+                        Log.e("DeleteAdapter", "cancel " + jsonObject.toString());
+
+                    } else {
+                        Log.e("DeleteAdapter", "error " + response.errorBody().toString());
+                        // Log.e(TAG,"Else " + response.message() + " code " +response.code());
+                        String errorValue = response.errorBody().string();
+
+                        JSONObject errorJsonObject = new JSONObject(errorValue);
+                        Utils.showToast(((FragmentActivity) mContext), errorJsonObject.optString("msg"));
+                        //  Log.e(TAG,"Error " + errorValue);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
+    public void warningsingle(final Context context, final String card_id, final int position) {
+
+
+        challengeDialog = new Dialog(context, R.style.PauseDialog);
+        LayoutInflater li = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        challengeDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        challengeDialog.setContentView(R.layout.confirmation_for_delete_card);
+        challengeDialog.setCanceledOnTouchOutside(false);
+        challengeDialog.setCancelable(false);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+
+        lp.copyFrom(challengeDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        challengeDialog.show();
+        challengeDialog.getWindow().setAttributes(lp);
+
+        challengeDialog.getWindow().setGravity(Gravity.CENTER);
+        challengeDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+
+        Button mOkbtn = (Button) challengeDialog.findViewById(R.id.btn_proceed);
+        Button mCancelGameBtn = (Button) challengeDialog.findViewById(R.id.btn_cancel_state);
+        TextView mOkTv = (TextView) challengeDialog.findViewById(R.id.tv_proceed);
+        TextView mDescTv = (TextView) challengeDialog.findViewById(R.id.tv_challenge_desc);
+
+        mDescTv.setText("Are you sure you want to delete this card?");
+
+
+        mCancelGameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                challengeDialog.dismiss();
+            }
+        });
+        mOkbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callDeleteCardListAPI(context, card_id, position);
+                Utils.showProgress(context);
+                challengeDialog.dismiss();
+            }
+        });
+        challengeDialog.show();
+
+
+    }
+
+
+    private void callDeleteCardListAPI(final Context mContext, String card_id, final int position) {
+
+        ApiInterface apiService = ApiClient.getClient(((FragmentActivity) mContext)).create(ApiInterface.class);
+        Call<ResponseBody> call = apiService.deleteCardList(Pref.getValue(mContext, Constants.PREF_TOKEN, ""), card_id);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    Log.e("DeleteAdapter", "response " + response.toString());
+                    Utils.dismissProgress();
+                    if (response.isSuccessful()) {
+                        String res = response.body().string();
+                        JSONObject jsonObject = new JSONObject(res);
+
+                        if (jsonObject.optString("code").equals("200")) {
+                            notifyDataSetChanged();
+                            mContext.startActivity(new Intent(mContext, RequestNewApplicationCardActivity.class));
+                            ((FragmentActivity) mContext).overridePendingTransition(0, 0);
+                            ((FragmentActivity) mContext).finish();
+
+                        } else if (jsonObject.optString("code").equals("500")) {
+                            Utils.exitApplication(mContext);
+                        } else {
+                            Toast.makeText(mContext, "" + jsonObject.optString("message"), Toast.LENGTH_SHORT).show();
+                        }
+
+                        Log.e("DeleteAdapter", "cancel " + jsonObject.toString());
+
+                    } else {
+                        Log.e("DeleteAdapter", "error " + response.errorBody().toString());
+                        // Log.e(TAG,"Else " + response.message() + " code " +response.code());
+                        String errorValue = response.errorBody().string();
+
+                        JSONObject errorJsonObject = new JSONObject(errorValue);
+                        Utils.showToast(((FragmentActivity) mContext), errorJsonObject.optString("msg"));
+                        //  Log.e(TAG,"Error " + errorValue);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+}

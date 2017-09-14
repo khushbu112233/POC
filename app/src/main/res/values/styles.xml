@@ -1,0 +1,79 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MyLoginRegisterTextInputLayout" parent="AppTheme">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorHint">@color/white_opasity</item>
+        <item name="colorControlNormal">@color/white_opasity</item>
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
+    <style name="MyLoginRegisterTextInputEdit" parent="MyLoginRegisterTextInputLayout">
+        <item name="colorControlActivated">@color/white</item>
+    </style>
+
+    <style name="MyTextInputLayout" parent="AppTheme">
+        <item name="colorAccent">@color/login_blue_color</item>
+        <item name="android:textColorHint">@color/dark_gray</item>
+        <item name="colorControlNormal">@color/dark_gray</item>
+        <item name="colorControlActivated">@color/login_blue_color</item>
+    </style>
+
+    <style name="MyTextInputEdit" parent="MyTextInputLayout">
+        <item name="colorControlActivated">@color/login_blue_color</item>
+    </style>
+
+    <style name="ErrorTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/ln_colorError</item>
+    </style>
+
+    <style name="error_appearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/ln_colorError</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+
+    <style name="MenuButtonsSmall">
+        <item name="fab_size">normal</item>
+        <item name="fab_colorNormal">#1565C0</item>
+        <item name="fab_colorPressed">#2272CD</item>
+        <item name="fab_colorRipple">#62B2FF</item>
+    </style>
+
+    <style name="MenuButtonsSmall.Green">
+        <item name="fab_colorNormal">#3bb2fb</item>
+        <item name="fab_colorPressed">#2da3eb</item>
+        <item name="fab_colorRipple">#2397de</item>
+    </style>
+
+    <style name="FrameWhiteBgStyle">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:background">@drawable/round_full_background_light_gray</item>
+    </style>
+
+
+    <style name="PauseDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/PauseDialogAnimation</item>
+    </style>
+
+    <style name="PauseDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/animation_on</item>
+        <item name="android:windowExitAnimation">@anim/animation_off</item>
+    </style>
+
+    <style name="MyRadioButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#1565C0</item>
+        <item name="colorControlActivated">#62B2FF</item>
+    </style>
+</resources>

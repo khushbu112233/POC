@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">MyCardSecured</string>
+
+    //for login
+    <string name="login_to_mysecuredcard">Login to</string>
+    <string name="register_to_mysecuredcard">Registration for</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="please_enter_validation_code">Please enter the verification code</string>
+    <string name="please_provide_email_address">Please provide email address.</string>
+    <string name="please_provide_email_id_phone_number">Please enter a valid Email ID / Mobile Number</string>
+    <string name="please_enter_valid_email_Address">Please enter a valid email address.</string>
+    <string name="please_enter_valid_phone_number">Please enter a valid phone number.</string>
+    <string name="please_enter_username">Please enter username.</string>
+    <string name="please_provide_confirm_email_address">Please provide confirm email address.</string>
+    <string name="please_provide_date_of_birth">Please provide date of birth.</string>
+    <string name="age_must_be_18_year">User age must be above 18 years.</string>
+    <string name="please_enter_valid_confirm_email_Address">Please enter a valid confirm email address.</string>
+    <string name="please_select_country">Please select country.</string>
+    <string name="please_provide_phone_no">Please provide phone number.</string>
+    <string name="both_email_not_matched">both email not matched!</string>
+    <string name="Please_provide_password">Please provide password.</string>
+    <string name="Please_provide_confirm_password">Please provide confirm password.</string>
+    <string name="Both_Password_not_matched">Both Password not matched!</string>
+    <string name="Please_select_card_category">Please select card category.</string>
+    <string name="Please_select_card_type">Please select card type.</string>
+    <string name="Please_select_Bank">Please select bank.</string>
+    <string name="Please_provice_card_number">Please provice card number.</string>
+    <string name="Please_provide_expiry_date">Please provide expiry date.</string>
+    <string name="Please_provice_card_name">Please provice card name.</string>
+    <string name="Please_provide_residential_address">Please provide residential address.</string>
+    <string name="Please_provide_customer_service_no">Please provide customer service no.</string>
+    <string name="Please_provide_valid_card_number">Please provide valid card number.</string>
+    <string name="valid_thru">Valid \nthru</string>
+    <string name="card_category">Card category</string>
+    <string name="card_type">Card type</string>
+    //for toast
+    <string name="NO_INTERNET_CONNECTION">No Internet Connection</string>
+
+    <string name="swipe_delete">Delete</string>
+    <string name="swipe_close">Close</string>
+    <string name="submit">SUBMIT</string>
+    <string name="Please_provide_security_code">Please provide security code.</string>
+    <string name="Please_provide_address">Please provide address.</string>
+    <string name="Please_provide_street_address1">Please provide street address.</string>
+    <string name="Please_provide_street_address2">Please provide street address2.</string>
+    <string name="Please_provide_city">Please provide city.</string>
+    <string name="Please_provide_state">Please provide state.</string>
+    <string name="Please_provide_zipCode">Please provide zip code.</string>
+    <string name="Please_provide_valid_zipCode">Please provide valid zip code.</string>
+    <string name="Please_enter_firstname">Please enter firstname.</string>
+    <string name="Please_enter_middle_name">Please enter middlename.</string>
+</resources>

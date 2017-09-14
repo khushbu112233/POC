@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="rightColors">
+        <item>@color/colorAccent</item>
+        <item>@color/colorPrimary</item>
+    </integer-array>
+
+    <integer-array name="leftColors">
+        <!--<item>@color/color4</item>
+        <item>@color/color5</item>
+        <item>@color/color6</item>-->
+    </integer-array>
+
+    <integer-array name="rightDrawables">
+        <item>@mipmap/app_icon</item>
+        <item>@mipmap/ic_launcher_round</item>
+    </integer-array>
+
+    <integer-array name="leftDrawables">
+       <!-- <item>@mipmap/ic_reload</item>-->
+    </integer-array>
+
+    <string-array name="rightTexts">
+        <item>@string/swipe_delete</item>
+        <item>@string/swipe_close</item>
+    </string-array>
+
+</resources>
